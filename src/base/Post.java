@@ -14,8 +14,14 @@ public class Post {
 		this.date = date;
 		this.content = content;
 	}
-	
-	/**
+
+    /**
+     * Default Constructor
+     */
+    public Post() {
+    }
+
+    /**
 	 * 
 	 * @return the content of the blog
 	 */
