@@ -1,44 +1,46 @@
 package base;
 
 public class User {
-    private String name;
-    private int id;
-    private String passowrd;
+    private int userId;
+    private String userName;
+    private String userEmail;
 
-
-    public User(String name, int id, String passowrd) {
-        this.name = name;
-        this.id = id;
-        this.passowrd = passowrd;
+    public User(int userId, String userName, String userEmail) {
+        this.userId = userId;
+        this.userName = userName;
+        this.userEmail = userEmail;
     }
 
-    public String getName() {
-        return name;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public int getId() {
-        return id;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getPassowrd() {
-        return passowrd;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setPassowrd(String passowrd) {
-        this.passowrd = passowrd;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     @Override
     public String toString() {
-        return name;
+        return "User [" +
+                "userId=" + userId +
+                ", userName=" + userName +
+                ", userEmail=" + userEmail +
+                ']';
     }
-
 }

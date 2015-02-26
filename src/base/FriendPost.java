@@ -44,6 +44,6 @@ public class FriendPost extends Post{
 
     @Override
     public String toString() {
-        return friend.toString() + super.toString();
+        return friend.toString() + "\n" + super.toString();
     }
 }

@@ -58,7 +58,7 @@ public class Post {
 	 */
 	public String toString() {
 		String dateString = date.toString();
-		return dateString + " " + content;
+		return dateString + "\n" + content;
 	}
 	
 	@Override
