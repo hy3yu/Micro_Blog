@@ -1,6 +1,9 @@
 package base;
 
-public class User {
+import java.io.Serializable;
+import java.util.Comparator;
+
+public class User implements Comparable<User>, Serializable {
     private int userId;
     private String userName;
     private String userEmail;
@@ -42,5 +45,14 @@ public class User {
                 ", userName=" + userName +
                 ", userEmail=" + userEmail +
                 ']';
+    }
+
+    public int compareTo(User u) {
+        if (userId > u.userId)
+            return 1;
+        else if (userId == u.userId)
+            return 0;
+        else
+            return -1;
     }
 }

@@ -3,12 +3,14 @@ package blog;
 import base.Post;
 import base.User;
 
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * Created by pkw on 15年3月3日.
  */
-public class Blog {
+public class Blog implements Serializable{
     private User user;
     private ArrayList<Post> allPosts;
 
@@ -37,6 +39,10 @@ public class Blog {
         allPosts.add(p);
         System.out.println("A new Post: ");
         System.out.println(p.toString());
+    }
+
+    public void add(Post p) {
+        allPosts.add(p);
     }
 
     public void list() {
@@ -80,4 +86,50 @@ public class Blog {
         Blog b = (Blog) obj;
         return (b.getUser().equals(user) && b.getAllPosts().equals(allPosts));
     }
+
+    public void search(int month, String person) {
+        Calendar cal = Calendar.getInstance();
+        for (Post p: allPosts) {
+            cal.setTime(p.getDate());
+            int postMonth = cal.get(Calendar.MONTH);
+            postMonth++;
+            if (postMonth == month && p.getContent().contains(person))
+                System.out.println(p.toString());
+        }
+    }
+
+    public void save(String saveFilePath) {
+        try {
+            FileOutputStream fo = new FileOutputStream(saveFilePath);
+            ObjectOutputStream oos = new ObjectOutputStream(fo);
+            oos.writeObject(this);
+        } catch (IOException e) {
+            // well...
+        }
+    }
+
+    public void load(String loadFilePath) {
+        Blog b = null;
+        Object o = null;
+        try {
+            FileInputStream fi = new FileInputStream(loadFilePath);
+            ObjectInputStream ois = new ObjectInputStream(fi);
+            o = ois.readObject();
+        } catch (FileNotFoundException e) {
+            System.out.println(" Wait! There is something wrong. I cannot find the file...");
+            return;
+        } catch (ClassNotFoundException e2) {
+            // well...
+            return;
+        } catch (IOException e3) {
+            // well
+            return;
+        }
+        b = (Blog) o;
+        this.setAllPosts(b.getAllPosts());
+        this.setUser(b.getUser());
+
+    }
+
+
 }

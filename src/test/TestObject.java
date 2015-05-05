@@ -9,7 +9,7 @@ import base.FriendPost;
  * Created by pkw on 2015/2/26.
  */
 public class TestObject {
-    public static void main(String args[]) {
+    public static void main1(String args[]) {
         User user = new User(1, "COMP3021", "COMP3021@cse.ust.hk");
         Date date = new Date();
         String content = "This is my first post!";

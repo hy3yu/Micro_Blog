@@ -20,7 +20,7 @@ public class TestBlog {
         }
         return line;
     }
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         TestBlog testBlog = new TestBlog();
         User user = new User(1, "COMP3021", "COMP3021@cse.ust.hk");
         Blog myBlog = new Blog(user);

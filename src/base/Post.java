@@ -1,7 +1,9 @@
 package base;
+import java.io.Serializable;
+import java.util.Comparator;
 import java.util.Date;
 
-public class Post {
+public class Post implements Comparable<Post>, Serializable {
 	private Date date;
 	private String content;
 	
@@ -56,6 +58,7 @@ public class Post {
 	/**
 	 * 
 	 */
+    @Override
 	public String toString() {
 		String dateString = date.toString();
 		return dateString + "\n" + content;
@@ -92,11 +95,14 @@ public class Post {
 	/**
 	 * check whether this post contain some key words
 	 * @param keyWords
-	 * @return 
+	 * @return boolean
 	 */
 	public boolean contains(String keyWords) {
 		return content.contains(keyWords);
 	}
-	
+
+    public int compareTo(Post p) {
+        return this.getDate().compareTo(p.getDate());
+    }
 	
 }
